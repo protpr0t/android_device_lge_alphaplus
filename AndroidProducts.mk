@@ -6,8 +6,3 @@
 
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/lineage_alphaplus.mk
-
-COMMON_LUNCH_CHOICES := \
-    lineage_alphaplus-eng \
-    lineage_alphaplus-user \
-    lineage_alphaplus-userdebug
