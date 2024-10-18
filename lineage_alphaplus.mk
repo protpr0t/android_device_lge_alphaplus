@@ -26,7 +26,6 @@ TARGET_VENDOR_DEVICE_NAME := alphaplus
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=alphaplus_lao_com \
-    PRIVATE_BUILD_DESC="alphaplus_lao_com-user 12 SKQ1.211103.001 22244172863c5 release-keys"
-
-BUILD_FINGERPRINT := lge/alphaplus_lao_com/alphaplus:12/SKQ1.211103.001/22244172863c5:user/release-keys
+    DeviceProduct=alphaplus_lao_com \
+    BuildDesc="alphaplus_lao_com-user 12 SKQ1.211103.001 22244172863c5 release-keys" \
+    BuildFingerprint=lge/alphaplus_lao_com/alphaplus:12/SKQ1.211103.001/22244172863c5:user/release-keys
