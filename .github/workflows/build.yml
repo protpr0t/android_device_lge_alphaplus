@@ -23,22 +23,25 @@ jobs:
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       - name: Setup Crave Configuration
+        env:
+          CRAVE_USERNAME: ${{ secrets.CRAVE_USERNAME }}
+          CRAVE_TOKEN: ${{ secrets.CRAVE_TOKEN }}
         run: |
           mkdir -p ~/.config/crave/
-          cat << 'EOF_CONFIG' > ~/.config/crave/crave.conf
+          cat <<EOF > ~/.config/crave/crave.conf
           {
-            "username": "frostxyz8@gmail.com",
+            "username": "$CRAVE_USERNAME",
             "headers": {
               "Content-Type": "application/json",
-              "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE2MjMsInRlYW1JZCI6MTQsImlzQXBpS2V5Ijp0cnVlLCJpYXQiOjE3ODczMjI2NTZ9.vi6AEyH8IEnRUp4MwUJDg-SQtlGYHhoFnie2t4_zYpk",
+              "Authorization": "$CRAVE_TOKEN",
               "User-Agent": "Crave"
             },
             "projects": [],
             "server": "https://foss.crave.io/api"
           }
-          EOF_CONFIG
+          EOF
 
-      - name: Run Build via Crave CLI
+      - name: Execute Build on Crave Devspace
         run: |
           crave run -- "
           rm -rf .repo/local_manifests/
@@ -46,19 +49,19 @@ jobs:
 
           repo init -u https://github.com/RisingOS-Revived/android -b sixteen-qpr2 --depth=1 --git-lfs --no-clone-bundle
 
-          cat << 'EOF_MANIFEST' > .repo/local_manifests/alphaplus.xml
-          <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+          cat << 'EOF' > .repo/local_manifests/alphaplus.xml
+          <?xml version="1.0" encoding="UTF-8"?>
           <manifest>
-                  <remote name=\"rem\" fetch=\"https://github.com\" />
+                  <remote name="rem" fetch="https://github.com" />
 
-                  <project path=\"hardware/lge\" name=\"rainbowdashh/android_hardware_lge\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"device/lge/alphaplus\" name=\"protpr0t/android_device_lge_alphaplus\" remote=\"rem\" revision=\"rising-23.2\" clone-depth=\"1\" />
-                  <project path=\"device/lge/sm8150-common\" name=\"rainbowdashh/android_device_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"vendor/lge/alphaplus\" name=\"lge-qcom-dev/proprietary_vendor_lge_alphaplus\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"vendor/lge/sm8150-common\" name=\"rainbowdashh/proprietary_vendor_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"kernel/lge/sm8150\" name=\"rainbowdashh/android_kernel_lge_sm8150\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path="hardware/lge" name="rainbowdashh/android_hardware_lge" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="rem" revision="rising-23.2" clone-depth="1" />
+                  <project path="device/lge/sm8150-common" name="rainbowdashh/android_device_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="vendor/lge/alphaplus" name="lge-qcom-dev/proprietary_vendor_lge_alphaplus" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="vendor/lge/sm8150-common" name="rainbowdashh/proprietary_vendor_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="kernel/lge/sm8150" name="rainbowdashh/android_kernel_lge_sm8150" remote="rem" revision="lineage-23.2" clone-depth="1" />
           </manifest>
-          EOF_MANIFEST
+          EOF
 
           /opt/crave/resync.sh
 
@@ -67,3 +70,14 @@ jobs:
           riseup alphaplus userdebug
           rise b
           "
+
+      - name: Pull Build Artifacts
+        run: |
+          crave pull out/target/product/alphaplus/*.zip
+
+      - name: Upload Build Artifact to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: RisingOS-alphaplus
+          path: out/target/product/alphaplus/*.zip
+          retention-days: 7
