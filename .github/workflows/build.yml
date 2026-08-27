@@ -1,3 +1,4 @@
+cat << 'EOF' > .github/workflows/build.yml
 name: Crave Automated Android ROM Build
 
 on:
@@ -18,15 +19,14 @@ jobs:
       - name: Install Crave CLI
         run: |
           mkdir -p bin
-          curl -sL https://raw.githubusercontent.com/accuware/crave/main/crave -o bin/crave || \
-          curl -sL https://github.com/accuware/crave/releases/latest/download/crave -o bin/crave
+          curl -sL https://raw.githubusercontent.com/accupara/crave/master/crave -o bin/crave || curl -sL https://github.com/accupara/crave/releases/latest/download/crave -o bin/crave
           chmod +x bin/crave
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       - name: Setup Crave Configuration
         run: |
           mkdir -p ~/.config/crave/
-          cat << 'EOF' > ~/.config/crave/crave.conf
+          cat << 'EOF_CONFIG' > ~/.config/crave/crave.conf
           {
             "username": "frostxyz8@gmail.com",
             "headers": {
@@ -37,7 +37,7 @@ jobs:
             "projects": [],
             "server": "https://foss.crave.io/api"
           }
-          EOF
+          EOF_CONFIG
 
       - name: Run Build via Crave CLI
         run: |
@@ -47,19 +47,19 @@ jobs:
 
           repo init -u https://github.com/RisingOS-Revived/android -b sixteen-qpr2 --depth=1 --git-lfs --no-clone-bundle
 
-          cat << 'EOF' > .repo/local_manifests/alphaplus.xml
-          <?xml version="1.0" encoding="UTF-8"?>
+          cat << 'EOF_MANIFEST' > .repo/local_manifests/alphaplus.xml
+          <?xml version=\"1.0\" encoding=\"UTF-8\"?>
           <manifest>
-                  <remote name="rem" fetch="https://github.com" />
+                  <remote name=\"rem\" fetch=\"https://github.com\" />
 
-                  <project path="hardware/lge" name="rainbowdashh/android_hardware_lge" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="rem" revision="rising-23.2" clone-depth="1" />
-                  <project path="device/lge/sm8150-common" name="rainbowdashh/android_device_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="vendor/lge/alphaplus" name="lge-qcom-dev/proprietary_vendor_lge_alphaplus" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="vendor/lge/sm8150-common" name="rainbowdashh/proprietary_vendor_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="kernel/lge/sm8150" name="rainbowdashh/android_kernel_lge_sm8150" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path=\"hardware/lge\" name=\"rainbowdashh/android_hardware_lge\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path=\"device/lge/alphaplus\" name=\"protpr0t/android_device_lge_alphaplus\" remote=\"rem\" revision=\"rising-23.2\" clone-depth=\"1\" />
+                  <project path=\"device/lge/sm8150-common\" name=\"rainbowdashh/android_device_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path=\"vendor/lge/alphaplus\" name=\"lge-qcom-dev/proprietary_vendor_lge_alphaplus\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path=\"vendor/lge/sm8150-common\" name=\"rainbowdashh/proprietary_vendor_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path=\"kernel/lge/sm8150\" name=\"rainbowdashh/android_kernel_lge_sm8150\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
           </manifest>
-          EOF
+          EOF_MANIFEST
 
           /opt/crave/resync.sh
 
@@ -68,3 +68,4 @@ jobs:
           riseup alphaplus userdebug
           rise b
           "
+EOF
