@@ -1,3 +1,10 @@
+name: Crave Automated Android ROM Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "rising-23.2" ]
+
 # 1. Generate Crave configuration file
 mkdir -p ~/.config/crave/
 cat << 'EOF' > ~/.config/crave/crave.conf
