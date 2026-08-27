@@ -43,7 +43,7 @@ jobs:
 
       - name: Execute Build on Crave Devspace
         run: |
-          crave run --no-patch -- "
+          crave run --project "RisingOS" --no-patch -- "
           rm -rf .repo/local_manifests/
           mkdir -p .repo/local_manifests/
 
@@ -67,8 +67,8 @@ jobs:
 
           source build/envsetup.sh
           gk -s
-          riseup alphaplus userdebug
-          rise b
+          riseup alphaplus userdebug || lunch lineage_alphaplus-userdebug
+          rise b || m bacon
           "
 
       - name: Pull Build Artifacts
