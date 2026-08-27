@@ -18,7 +18,8 @@ jobs:
       - name: Install Crave CLI
         run: |
           mkdir -p bin
-          curl -s https://raw.githubusercontent.com/accupara/crave/main/crave -o bin/crave
+          curl -sL https://raw.githubusercontent.com/accuware/crave/main/crave -o bin/crave || \
+          curl -sL https://github.com/accuware/crave/releases/latest/download/crave -o bin/crave
           chmod +x bin/crave
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
@@ -41,32 +42,27 @@ jobs:
       - name: Run Build via Crave CLI
         run: |
           crave run -- "
-          # Clean and create manifest directory
           rm -rf .repo/local_manifests/
           mkdir -p .repo/local_manifests/
 
-          # Init target base ROM tree
           repo init -u https://github.com/RisingOS-Revived/android -b sixteen-qpr2 --depth=1 --git-lfs --no-clone-bundle
 
-          # Create local manifest
           cat << 'EOF' > .repo/local_manifests/alphaplus.xml
-          <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+          <?xml version="1.0" encoding="UTF-8"?>
           <manifest>
-                  <remote name=\"rem\" fetch=\"https://github.com\" />
+                  <remote name="rem" fetch="https://github.com" />
 
-                  <project path=\"hardware/lge\" name=\"rainbowdashh/android_hardware_lge\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"device/lge/alphaplus\" name=\"protpr0t/android_device_lge_alphaplus\" remote=\"rem\" revision=\"rising-23.2\" clone-depth=\"1\" />
-                  <project path=\"device/lge/sm8150-common\" name=\"rainbowdashh/android_device_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"vendor/lge/alphaplus\" name=\"lge-qcom-dev/proprietary_vendor_lge_alphaplus\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"vendor/lge/sm8150-common\" name=\"rainbowdashh/proprietary_vendor_lge_sm8150-common\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
-                  <project path=\"kernel/lge/sm8150\" name=\"rainbowdashh/android_kernel_lge_sm8150\" remote=\"rem\" revision=\"lineage-23.2\" clone-depth=\"1\" />
+                  <project path="hardware/lge" name="rainbowdashh/android_hardware_lge" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="rem" revision="rising-23.2" clone-depth="1" />
+                  <project path="device/lge/sm8150-common" name="rainbowdashh/android_device_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="vendor/lge/alphaplus" name="lge-qcom-dev/proprietary_vendor_lge_alphaplus" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="vendor/lge/sm8150-common" name="rainbowdashh/proprietary_vendor_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="kernel/lge/sm8150" name="rainbowdashh/android_kernel_lge_sm8150" remote="rem" revision="lineage-23.2" clone-depth="1" />
           </manifest>
           EOF
 
-          # Sync sources via Crave fast fetch script
           /opt/crave/resync.sh
 
-          # Setup build environment and trigger build
           source build/envsetup.sh
           gk -s
           riseup alphaplus userdebug
