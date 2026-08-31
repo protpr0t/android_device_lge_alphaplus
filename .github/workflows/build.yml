@@ -56,9 +56,9 @@ jobs:
 
                   <project path="hardware/lge" name="rainbowdashh/android_hardware_lge" remote="rem" revision="lineage-23.2" clone-depth="1" />
                   <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="rem" revision="rising-23.2" clone-depth="1" />
-                  <project path="device/lge/sm8150-common" name="rainbowdashh/android_device_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="vendor/lge/alphaplus" name="lge-qcom-dev/proprietary_vendor_lge_alphaplus" remote="rem" revision="lineage-23.2" clone-depth="1" />
-                  <project path="vendor/lge/sm8150-common" name="rainbowdashh/proprietary_vendor_lge_sm8150-common" remote="rem" revision="lineage-23.2" clone-depth="1" />
+                  <project path="device/lge/sm8150-common" name="rainbowdashh/android_device_lge_sm8150-common" remote="rem" revision="lineage-22.2" clone-depth="1" />
+                  <project path="vendor/lge/alphaplus" name="lge-qcom-dev/proprietary_vendor_lge_alphaplus" remote="rem" revision="lineage-22.2" clone-depth="1" />
+                  <project path="vendor/lge/sm8150-common" name="rainbowdashh/proprietary_vendor_lge_sm8150-common" remote="rem" revision="lineage-22.2" clone-depth="1" />
                   <project path="kernel/lge/sm8150" name="rainbowdashh/android_kernel_lge_sm8150" remote="rem" revision="lineage-23.2" clone-depth="1" />
           </manifest>
           EOF
@@ -67,7 +67,7 @@ jobs:
 
           source build/envsetup.sh
           gk -s
-          riseup alphaplus userdebug || lunch lineage_alphaplus-userdebug
+          riseup alphaplus userdebug || lunch rising_alphaplus-userdebug
           rise b || m bacon
           "
 
