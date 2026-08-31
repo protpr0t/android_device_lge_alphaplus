@@ -5,4 +5,8 @@
 #
 
 PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/lineage_alphaplus.mk
+    $(LOCAL_DIR)/rising_alphaplus.mk
+
+COMMON_LUNCH_CHOICES := \
+    rising_alphaplus-userdebug \
+    rising_alphaplus-user
