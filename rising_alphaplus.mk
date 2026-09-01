@@ -41,7 +41,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_alphaplus
+PRODUCT_NAME := rising_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
