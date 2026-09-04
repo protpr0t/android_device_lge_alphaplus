@@ -8,5 +8,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/alpha_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    alphadroid_alphaplus-ap3a-userdebug \
-    alphadroid_alphaplus-ap3a-user
+    alpha_alphaplus-ap3a-userdebug \
+    alpha_alphaplus-ap3a-user
