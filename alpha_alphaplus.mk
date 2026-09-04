@@ -8,9 +8,10 @@
 $(call inherit-product, device/lge/alphaplus/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/alpha/config/common_full_phone.mk)
 
-# RisingOS-Flags
+# AlphaDroid-Flags
+ALPHADROID_BUILD_TYPE := UNOFFICIAL
 TORCH_STR_SUPPORTED := true
 
 # Addons
@@ -33,15 +34,15 @@ TARGET_ENABLE_BLUR := true
 # Whether to ship aperture camera, false by default
 PRODUCT_NO_CAMERA := false
 
-# rising Maintainer
-RISING_MAINTAINER := protpr0t
+# AlphaDroid Maintainer
+ALPHADROID_MAINTAINER := protpr0t
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := rising_alphaplus
+PRODUCT_NAME := alphadroid_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
