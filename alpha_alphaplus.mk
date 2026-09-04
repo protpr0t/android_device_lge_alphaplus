@@ -42,7 +42,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := alphadroid_alphaplus
+PRODUCT_NAME := alpha_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
@@ -54,5 +54,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=alphaplus_lao_com \
     BuildDesc="alphaplus_lao_com-user 12 SKQ1.211103.001 22244172863c5 release-keys" \
     BuildFingerprint=lge/alphaplus_lao_com/alphaplus:12/SKQ1.211103.001/22244172863c5:user/release-keys \
-    RisingMaintainer="protpr0t" \
-    RisingChipset="Snapdragon 855"
+    AlphaDroidMaintainer="protpr0t" \
+    AlphaDroidChipset="Snapdragon 855"
