@@ -4,9 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/lineage_alphaplus.mk
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/alpha_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    RisingOS_alphaplus-userdebug \
-    RisingOS_alphaplus-user
+    alpha_alphaplus-userdebug \
+    alpha_alphaplus-user
