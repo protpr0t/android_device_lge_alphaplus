@@ -50,6 +50,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-lge
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=alphaplus_lao_com \
     BuildDesc="alphaplus_lao_com-user 12 SKQ1.211103.001 22244172863c5 release-keys" \
-    BuildFingerprint=lge/alphaplus_lao_com/alphaplus:12/SKQ1.211103.001/22244172863c5:user/release-keys \
-    AlphaDroidMaintainer="protpr0t" \
-    AlphaDroidChipset="Snapdragon 855"
+    BuildFingerprint=lge/alphaplus_lao_com/alphaplus:12/SKQ1.211103.001/22244172863c5:user/release-keys
