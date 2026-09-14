@@ -34,9 +34,6 @@ TARGET_ENABLE_BLUR := true
 # Whether to ship aperture camera, false by default
 PRODUCT_NO_CAMERA := false
 
-# AlphaDroid Maintainer
-ALPHADROID_MAINTAINER := protpr0t
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
