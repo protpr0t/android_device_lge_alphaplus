@@ -1,49 +1,45 @@
 name: Build AlphaDroid ROM (alphaplus)
 
-actions:
-  - name: "Build AlphaDroid"
-    triggers:
-      push:
-        branches:
-          - main
-          - master
-          - alphadroid-23.2
-      workflow_dispatch: {}
+on:
+  push:
+    branches:
+      - alphadroid-23.2
+  workflow_dispatch:
 
-    container_image: "ubuntu:22.04"
+jobs:
+  build:
+    runs-on: ubuntu-latest # Replace with your self-hosted runner label if using one
 
     steps:
-      - name: "Install System Dependencies & Repo Tool"
-        script: |
-          apt-get update && apt-get install -y \
+      - name: Maximize Disk Space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo docker image prune --all --force
+
+      - name: Install Dependencies & Repo Tool
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
             git-core gnupg flex bison build-essential zip curl zlib1g-dev \
             libc6-dev-i386 x11proto-core-dev libx11-dev libgl1-mesa-dev \
-            g++-multilib image-magick libxml2-utils xsltproc unzip python3 \
+            g++-multilib imagemagick libxml2-utils xsltproc unzip python3 \
             python-is-python3 bc libssl-dev libelf-dev rsync git-lfs ccache
 
-          mkdir -p /usr/local/bin
-          curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
-          chmod a+rx /usr/local/bin/repo
+          sudo mkdir -p /usr/local/bin
+          sudo curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo
+          sudo chmod a+rx /usr/local/bin/repo
 
-          git config --global user.name "BuildBuddy Automation"
-          git config --global user.email "build@buildbuddy.io"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
-      - name: "Configure Ccache & Remote BuildBuddy Cache"
-        script: |
-          export USE_CCACHE=1
-          export CCACHE_EXEC=$(which ccache)
-          export CCACHE_DIR="/root/.ccache"
-          ccache -M 50G
-          ccache -z
-          ccache -s
-
-      - name: "Initialize Manifest & Local Manifests"
-        script: |
-          mkdir -p ~/workspace
-          cd ~/workspace
+      - name: Initialize & Sync Sources
+        run: |
+          mkdir -p ~/workspace && cd ~/workspace
           mkdir -p .repo/local_manifests
 
-          cat << 'EOF' > .repo/local_manifests/alphaplus.xml
+          cat << 'MANIFEST_EOF' > .repo/local_manifests/alphaplus.xml
           <?xml version="1.0" encoding="UTF-8"?>
           <manifest>
             <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="github" revision="alphadroid-23.2" clone-depth="1" />
@@ -54,17 +50,13 @@ actions:
             <project path="vendor/lge/sm8150-common" name="protpr0t/proprietary_vendor_lge_sm8150-common" remote="github" revision="lineage-23.2" clone-depth="1" />
             <project path="hardware/pixelworks/interfaces" name="LineageOS/android_hardware_pixelworks_interfaces" remote="github" revision="lineage-23.2" clone-depth="1" />
           </manifest>
-          EOF
+          MANIFEST_EOF
 
           repo init -u https://github.com/AlphaDroid-Project/manifest -b alpha-16.2 --depth=1 --git-lfs --no-clone-bundle
-
-      - name: "Sync Source Tree"
-        script: |
-          cd ~/workspace
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-      - name: "Patch Maintainer Strings & Run Build"
-        script: |
+      - name: Build ROM
+        run: |
           cd ~/workspace
           find device/lge/ -type f -name "*.prop" -exec sed -i '/AlphaDroidMaintainer/d' {} + 2>/dev/null || true
           find vendor/alpha/ -type f -name "*.mk" -exec sed -i '/AlphaDroidMaintainer/d' {} + 2>/dev/null || true
@@ -72,19 +64,19 @@ actions:
           export USE_CCACHE=1
           export CCACHE_EXEC=$(which ccache)
           export CCACHE_DIR="/root/.ccache"
-          if [ -n "$BUILDBUDDY_API_KEY" ]; then
-            export CCACHE_SECONDARY_STORAGE="http://remote.buildbuddy.io:443|bearer_token=${BUILDBUDDY_API_KEY}"
-          fi
+          ccache -M 50G
 
           source build/envsetup.sh
           breakfast alphaplus
           m installclean
           mka bacon
 
-          ccache -s
-
-      - name: "Upload ROM Zip to Telegram"
-        script: |
+      - name: Upload ROM to Telegram
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
           OUT_DIR="$HOME/workspace/out/target/product/alphaplus"
           ROM_FILE=$(find "$OUT_DIR" -maxdepth 1 -name "AlphaDroid-*.zip" | head -n 1)
 
@@ -94,12 +86,7 @@ actions:
           fi
 
           BUILD_DATE=$(date +'%Y-%m-%d %H:%M')
-          echo "Uploading $ROM_FILE directly to Telegram..."
-
           curl -s -F chat_id="${TELEGRAM_CHAT_ID}" \
                -F document=@"${ROM_FILE}" \
                -F caption="AlphaDroid ROM Build for alphaplus ($BUILD_DATE)" \
                "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" > /dev/null
-        env:
-          TELEGRAM_BOT_TOKEN: "8936959622:AAFrHsU6HTKqSQd8IZFpF2CHpoXMhhOb9iw"
-          TELEGRAM_CHAT_ID: "149063451"
