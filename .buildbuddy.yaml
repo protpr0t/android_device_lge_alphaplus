@@ -1,4 +1,3 @@
-cat << 'EOF' > .buildbuddy.yaml
 name: Build AlphaDroid ROM (alphaplus)
 
 actions:
@@ -29,13 +28,22 @@ actions:
           git config --global user.name "BuildBuddy Automation"
           git config --global user.email "build@buildbuddy.io"
 
+      - name: "Configure Ccache & Remote BuildBuddy Cache"
+        script: |
+          export USE_CCACHE=1
+          export CCACHE_EXEC=$(which ccache)
+          export CCACHE_DIR="/root/.ccache"
+          ccache -M 50G
+          ccache -z
+          ccache -s
+
       - name: "Initialize Manifest & Local Manifests"
         script: |
           mkdir -p ~/workspace
           cd ~/workspace
           mkdir -p .repo/local_manifests
 
-          cat << 'MANIFEST_EOF' > .repo/local_manifests/alphaplus.xml
+          cat << 'EOF' > .repo/local_manifests/alphaplus.xml
           <?xml version="1.0" encoding="UTF-8"?>
           <manifest>
             <project path="device/lge/alphaplus" name="protpr0t/android_device_lge_alphaplus" remote="github" revision="alphadroid-23.2" clone-depth="1" />
@@ -46,7 +54,7 @@ actions:
             <project path="vendor/lge/sm8150-common" name="protpr0t/proprietary_vendor_lge_sm8150-common" remote="github" revision="lineage-23.2" clone-depth="1" />
             <project path="hardware/pixelworks/interfaces" name="LineageOS/android_hardware_pixelworks_interfaces" remote="github" revision="lineage-23.2" clone-depth="1" />
           </manifest>
-          MANIFEST_EOF
+          EOF
 
           repo init -u https://github.com/AlphaDroid-Project/manifest -b alpha-16.2 --depth=1 --git-lfs --no-clone-bundle
 
@@ -95,4 +103,3 @@ actions:
         env:
           TELEGRAM_BOT_TOKEN: "8936959622:AAFrHsU6HTKqSQd8IZFpF2CHpoXMhhOb9iw"
           TELEGRAM_CHAT_ID: "149063451"
-EOF
