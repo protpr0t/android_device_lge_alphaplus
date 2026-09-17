@@ -7,6 +7,7 @@ actions:
         branches:
           - main
           - master
+          - alphadroid-23.2
       workflow_dispatch: {}
 
     container_image: "ubuntu:22.04"
@@ -38,6 +39,8 @@ actions:
 
       - name: "Initialize Manifest & Local Manifests"
         script: |
+          mkdir -p ~/workspace
+          cd ~/workspace
           mkdir -p .repo/local_manifests
 
           cat << 'EOF' > .repo/local_manifests/alphaplus.xml
@@ -57,10 +60,12 @@ actions:
 
       - name: "Sync Source Tree"
         script: |
+          cd ~/workspace
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
       - name: "Patch Maintainer Strings & Run Build"
         script: |
+          cd ~/workspace
           find device/lge/ -type f -name "*.prop" -exec sed -i '/AlphaDroidMaintainer/d' {} + 2>/dev/null || true
           find vendor/alpha/ -type f -name "*.mk" -exec sed -i '/AlphaDroidMaintainer/d' {} + 2>/dev/null || true
 
@@ -80,7 +85,7 @@ actions:
 
       - name: "Upload ROM Zip to Telegram"
         script: |
-          OUT_DIR="out/target/product/alphaplus"
+          OUT_DIR="$HOME/workspace/out/target/product/alphaplus"
           ROM_FILE=$(find "$OUT_DIR" -maxdepth 1 -name "AlphaDroid-*.zip" | head -n 1)
 
           if [ ! -f "$ROM_FILE" ]; then
@@ -98,3 +103,4 @@ actions:
         env:
           TELEGRAM_BOT_TOKEN: "8936959622:AAFrHsU6HTKqSQd8IZFpF2CHpoXMhhOb9iw"
           TELEGRAM_CHAT_ID: "149063451"
+
