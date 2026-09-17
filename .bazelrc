@@ -1,5 +1,0 @@
-build --bes_results_url=https://app.buildbuddy.io/invocation/
-build --bes_backend=grpcs://remote.buildbuddy.io
-common --remote_cache=grpcs://remote.buildbuddy.io
-common --remote_timeout=10m
-common --remote_header=x-buildbuddy-api-key=3lTr6C5g14wCGM51q0nK
