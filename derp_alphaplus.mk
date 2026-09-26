@@ -4,18 +4,18 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit from device
-$(call inherit-product, device/lge/alphaplus/device.mk)
+# Inherit DerpFest common configurations
+$(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_alphaplus
+PRODUCT_NAME := derp_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
-PRODUCT_MODEL := G8 ThinQ
+PRODUCT_MODEL := LM-G820
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
 
