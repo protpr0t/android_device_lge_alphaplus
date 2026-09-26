@@ -6,3 +6,8 @@
 
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/lineage_alphaplus.mk
+
+COMMON_LUNCH_CHOICES := \
+    derp_alphaplus-user \
+    derp_alphaplus-userdebug \
+    derp_alphaplus-eng
