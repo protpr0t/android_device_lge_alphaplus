@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2023 The LineageOS Project
+# Copyright (C) 2026 AxionAOSP
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -7,39 +8,30 @@
 # Inherit from device
 $(call inherit-product, device/lge/alphaplus/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/alpha/config/common_full_phone.mk)
+# Inherit common AxionOS/Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# AlphaDroid-Flags
-ALPHADROID_BUILD_TYPE := UNOFFICIAL
+# AxionOS Features & Addons
 TORCH_STR_SUPPORTED := true
-
-# Addons
 TARGET_HAS_UDFPS := true
-
-# Gms
-WITH_GMS := false
-TARGET_CORE_GMS := false
-TARGET_CORE_GMS_EXTRAS := false
-
-# Ship Pixel Launcher
-TARGET_DEFAULT_PIXEL_LAUNCHER := true
-
-# Lawnchair Prebuilt
-TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
-
-# disable/enable blur support, default is false
 TARGET_ENABLE_BLUR := true
-
-# Whether to ship aperture camera, false by default
 PRODUCT_NO_CAMERA := false
 
-# Boot animation
+# Boot animation resolution
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
+# AxionOS Device Info Specs (Settings > About Phone)
+AXION_CAMERA_REAR_INFO := 12,16,12
+AXION_CAMERA_FRONT_INFO := 8
+AXION_MAINTAINER := protpr0t
+AXION_PROCESSOR := Snapdragon_855
+
+# Bypass Charging / Power Node Configuration
+TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
+
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := alpha_alphaplus
+PRODUCT_NAME := axion_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
