@@ -7,8 +7,8 @@
 
 # Inherit from device tree
 $(call inherit-product, device/lge/alphaplus/device.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Disable strict Product Packages Existence enforcement for AxionOS
 TARGET_DISABLE_EPPE := true
 
 # Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
