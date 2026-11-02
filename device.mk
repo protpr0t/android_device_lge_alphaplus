@@ -60,6 +60,8 @@ PRODUCT_COPY_FILES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 # Shipping API Level
 PRODUCT_SHIPPING_API_LEVEL := 28
