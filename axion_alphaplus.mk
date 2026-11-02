@@ -28,6 +28,7 @@ AXION_CAMERA_REAR_INFO := 12 MP + 16 MP + 12 MP
 AXION_CAMERA_FRONT_INFO := 8 MP
 AXION_MAINTAINER := protpr0t
 AXION_PROCESSOR := "Snapdragon 855"
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # Bypass Charging / Power Node Configuration
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
