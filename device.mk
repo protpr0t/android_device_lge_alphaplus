@@ -66,6 +66,8 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
+PRODUCT_PROPERTY_OVERRIDES += \
+    persistence.vendor.fingerprint.type=rear
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
