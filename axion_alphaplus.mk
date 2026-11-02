@@ -13,6 +13,8 @@ TARGET_DISABLE_EPPE := true
 
 # Inherit common AxionOS / LineageOS configuration
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Include private signing keys
+$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
 
 # AxionOS UI & Display Flags
 TARGET_ENABLE_BLUR := true
