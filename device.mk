@@ -59,15 +59,17 @@ PRODUCT_COPY_FILES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service
-PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
+
+# Fingerprint HAL (Gunakan Lineage AIDL Service)
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.lineage
+
+# Target Properties (Penulisan persist. yang benar)
 PRODUCT_PROPERTY_OVERRIDES += \
-    persistence.vendor.fingerprint.type=rear
+    persist.vendor.fingerprint.type=rear
 
 # Shipping API Level
 PRODUCT_SHIPPING_API_LEVEL := 28
