@@ -11,10 +11,8 @@ $(call inherit-product, device/lge/alphaplus/device.mk)
 # Disable strict Product Packages Existence enforcement for AxionOS
 TARGET_DISABLE_EPPE := true
 
-# Inherit common AxionOS / LineageOS configuration
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-# Include private signing keys
-$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
+# Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
+-include vendor/lineage-priv/keys/keys.mk
 
 # AxionOS UI & Display Flags
 TARGET_ENABLE_BLUR := true
@@ -26,10 +24,10 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # AxionOS Device Info Specs (Settings > About Phone)
-AXION_CAMERA_REAR_INFO := 12,16,12
-AXION_CAMERA_FRONT_INFO := 8
+AXION_CAMERA_REAR_INFO := 12 MP + 16 MP + 12 MP
+AXION_CAMERA_FRONT_INFO := 8 MP
 AXION_MAINTAINER := protpr0t
-AXION_PROCESSOR := Snapdragon_855
+AXION_PROCESSOR := "Snapdragon 855"
 
 # Bypass Charging / Power Node Configuration
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
