@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/axion_alphaplus.mk
+    $(LOCAL_DIR)/lineage_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    axion_alphaplus-user \
-    axion_alphaplus-userdebug \
-    axion_alphaplus-eng
+    lineage_alphaplus-user \
+    lineage_alphaplus-userdebug \
+    lineage_alphaplus-eng
