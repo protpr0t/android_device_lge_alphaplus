@@ -9,30 +9,30 @@
 $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-TARGET_DISABLE_EPPE := true
-
 # Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
 -include vendor/lineage-priv/keys/keys.mk
 
-# AxionOS UI & Display Flags
+# Evolution X flags
+TARGET_HAS_UDFPS := false
+TARGET_INCLUDE_BOOT_ANIMATIONS := true
+TARGET_DISABLE_EPPE := true
+TARGET_INCLUDE_GRAMOPHONE := true
+TARGET_INCLUDE_VIPERFX := false
+WITH_SU := true
+BYPASS_CHARGE_SUPPORTED := true
 TARGET_ENABLE_BLUR := true
+PERF_ANIM_OVERRIDE := false
+BUILD_BCR := true
+WITH_GMS := true
+
+# Other device flags
 PRODUCT_NO_CAMERA := false
 TORCH_STR_SUPPORTED := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # Boot Animation Resolution
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
-
-# AxionOS Device Info Specs (Settings > About Phone)
-AXION_CAMERA_REAR_INFO := 12 MP + 16 MP + 12 MP
-AXION_CAMERA_FRONT_INFO := 8 MP
-AXION_MAINTAINER := protpr0t
-AXION_PROCESSOR := Snapdragon_855
-TARGET_INCLUDE_AXFX := true
-TARGET_FACE_UNLOCK_SUPPORTED := true
-
-# Bypass Charging / Power Node Configuration
-TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
 
 # Device Identifiers (Must come after all product inclusions)
 PRODUCT_NAME := lineage_alphaplus
