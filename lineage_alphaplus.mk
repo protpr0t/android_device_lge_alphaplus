@@ -10,7 +10,7 @@ $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
--include vendor/lineage-priv/keys/keys.mk
+-include vendor/evolution-priv/keys/keys.mk
 
 # Evolution X flags
 TARGET_HAS_UDFPS := false
