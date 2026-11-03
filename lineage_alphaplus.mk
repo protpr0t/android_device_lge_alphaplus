@@ -26,6 +26,13 @@ TARGET_SCREEN_WIDTH := 1080
 # AxionOS Device Info Specs (Settings > About Phone)
 AXION_CAMERA_REAR_INFO := 12 MP + 16 MP + 12 MP
 AXION_CAMERA_FRONT_INFO := 8 MP
+
+# Set Build Type to UNOFFICIAL
+AXION_BUILD_TYPE := UNOFFICIAL
+
+# Override the default Lineage/Axion version string to match your requested format
+# This will output something like AXION-UNOFFICIAL-alphaplus-20261104
+AXION_DISPLAY_VERSION := AXION-$(AXION_BUILD_TYPE)-$(PRODUCT_DEVICE)
 AXION_MAINTAINER := protpr0t
 AXION_PROCESSOR := Snapdragon_855
 TARGET_INCLUDE_AXFX := true
