@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2023 The LineageOS Project
-# Copyright (C) 2026 AxionAOSP
+# Copyright (C) 2026 EvolutionX
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -11,6 +11,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
 -include vendor/evolution-priv/keys/keys.mk
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/evolution-priv/keys/releasekey
 
 # Evolution X flags
 TARGET_HAS_UDFPS := false
