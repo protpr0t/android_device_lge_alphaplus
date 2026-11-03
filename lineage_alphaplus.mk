@@ -35,7 +35,7 @@ TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
 
 # Device Identifiers (Must come after all product inclusions)
-PRODUCT_NAME := axion_alphaplus
+PRODUCT_NAME := lineage_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
