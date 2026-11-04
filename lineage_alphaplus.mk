@@ -6,7 +6,8 @@
 #
 
 # Inherit from device tree
-$(call inherit-product, device/lge/alphaplus/device.mk)
+$(cal
+l inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 TARGET_DISABLE_EPPE := true
@@ -37,6 +38,8 @@ AXION_MAINTAINER := protpr0t
 AXION_PROCESSOR := Snapdragon_855
 TARGET_INCLUDE_AXFX := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_INCLUDE_GOOGLE_TELECOMM := true
+TARGET_INCLUDE_PARTNER_SETUP := true
 
 # Bypass Charging / Power Node Configuration
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
