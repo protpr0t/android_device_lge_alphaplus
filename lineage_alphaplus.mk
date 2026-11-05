@@ -9,12 +9,6 @@
 $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Include private signing keys (Gunakan -include agar tidak crash jika repo keys absen)
--include vendor/infinity-priv/keys/keys.mk
-ifneq ($(wildcard vendor/infinity-priv/keys/releasekey.pk8),)
-PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/infinity-priv/keys/releasekey
-endif
-
 # Infinity X flags
 INFINITY_BUILD_TYPE := UNOFFICIAL
 INFINITY_MAINTAINER := protpr0t
