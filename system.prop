@@ -1,2 +1,7 @@
 # Voice assistant
 ro.opa.device_model_id=v45-deviceaction-v45-nffuo5
+
+# infinity flags props
+ro.product.marketname=G8 ThinQ
+ro.infinity.soc=Snapdragon 855
+ro.infinity.camera=12MP + 16MP + 8MP
