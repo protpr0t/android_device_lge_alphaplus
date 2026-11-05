@@ -4,4 +4,6 @@ ro.opa.device_model_id=v45-deviceaction-v45-nffuo5
 # infinity flags props
 ro.product.marketname=G8 ThinQ
 ro.infinity.soc=Snapdragon 855
+ro.infinity.battery=3500mAh
+ro.infinity.display=1440 x 3120, 60 Hz
 ro.infinity.camera=12MP + 16MP + 8MP
