@@ -1,14 +1,14 @@
 #
 # Copyright (C) 2024 The LineageOS Project
-# Copyright (C) 2026 AxionAOSP
+# Copyright (C) 2026 ProjectInfinityX
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_alphaplus.mk
+    $(LOCAL_DIR)/infinity_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_alphaplus-user \
-    lineage_alphaplus-userdebug \
-    lineage_alphaplus-eng
+    infinity_alphaplus-user \
+    infinity_alphaplus-userdebug \
+    infinity_alphaplus-eng
