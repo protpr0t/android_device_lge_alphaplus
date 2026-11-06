@@ -7,7 +7,7 @@
 
 # Inherit from device tree
 $(call inherit-product, device/lge/alphaplus/device.mk)
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Infinity X flags
 INFINITY_BUILD_TYPE := UNOFFICIAL
@@ -29,7 +29,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # Device Identifiers (Must come after all product inclusions)
-PRODUCT_NAME := lineage_alphaplus
+PRODUCT_NAME := infinity_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
