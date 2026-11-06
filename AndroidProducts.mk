@@ -11,4 +11,4 @@ PRODUCT_MAKEFILES := \
 COMMON_LUNCH_CHOICES := \
     infinity_alphaplus-cp2a-user \
     infinity_alphaplus-cp2a-userdebug \
-    infinity_alphaplus-cp2aeng
+    infinity_alphaplus-cp2a-eng
