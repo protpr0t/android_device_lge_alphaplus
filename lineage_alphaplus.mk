@@ -19,6 +19,7 @@ TARGET_HAS_UDFPS := true
 # Gms
 WITH_GMS := true
 WITH_MICROG := false
+TARGET_USES_MINI_GAPPS := true
 
 # Ship Pixel Launcher
 TARGET_DEFAULT_PIXEL_LAUNCHER := true
@@ -31,10 +32,17 @@ TARGET_ENABLE_BLUR := true
 
 # Whether to ship aperture camera, false by default
 PRODUCT_NO_CAMERA := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_INCLUDE_GOOGLE_TELECOMM := true
+TARGET_INCLUDE_PARTNER_SETUP := true
+
+# Bypass Charging / Power Node Configuration
+TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
 
 # rising Maintainer
+RISING_DISPLAY_VERSION := RISING-$(RISING_BUILD_TYPE)-$(PRODUCT_DEVICE)
 RISING_MAINTAINER := protpr0t
-RISING_BUILDTYPE := UNOFFICIAL
+RISING_BUILD_TYPE := UNOFFICIAL
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
