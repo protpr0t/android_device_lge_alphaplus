@@ -10,7 +10,7 @@ $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Infinity X flags
-INFINITY_BUILD_TYPE := UNOFFICIAL
+INFINITY_BUILD_TYPE := Unofficial
 INFINITY_MAINTAINER := protpr0t
 TARGET_SUPPORTS_BLUR := true
 TARGET_HAS_UDFPS := false
