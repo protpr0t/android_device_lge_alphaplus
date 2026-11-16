@@ -35,6 +35,7 @@ PRODUCT_NO_CAMERA := false
 
 # rising Maintainer
 RISING_MAINTAINER := protpr0t
+RISING_BUILDTYPE := UNOFFICIAL
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
