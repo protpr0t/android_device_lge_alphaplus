@@ -17,8 +17,8 @@ TORCH_STR_SUPPORTED := true
 TARGET_HAS_UDFPS := true
 
 # Gms
-WITH_GMS := false
-TARGET_CORE_GMS := false
+WITH_GMS := true
+TARGET_CORE_GMS := true
 TARGET_CORE_GMS_EXTRAS := false
 
 # Ship Pixel Launcher
