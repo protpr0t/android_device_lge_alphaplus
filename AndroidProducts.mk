@@ -4,10 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/rising_alphaplus.mk
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/lineage_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    rising_alphaplus-userdebug \
-    rising_alphaplus-user \
-    rising_alphaplus-eng
+    lineage_alphaplus-user \
+    lineage_alphaplus-userdebug \
+    lineage_alphaplus-eng
