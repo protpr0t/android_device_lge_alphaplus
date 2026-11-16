@@ -38,6 +38,8 @@ TARGET_INCLUDE_PARTNER_SETUP := true
 
 # Bypass Charging / Power Node Configuration
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
+WITH_SU := true
+BYPASS_CHARGE_SUPPORTED := true
 
 # rising Maintainer
 RISING_DISPLAY_VERSION := RISING-$(RISING_BUILD_TYPE)-$(PRODUCT_DEVICE)
