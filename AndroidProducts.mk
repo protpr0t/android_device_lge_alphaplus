@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES += \
-    $(LOCAL_DIR)/derp_alphaplus.mk
+    $(LOCAL_DIR)/lineage_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    derp_alphaplus-user \
-    derp_alphaplus-userdebug \
-    derp_alphaplus-eng
+    lineage_alphaplus-user \
+    lineage_alphaplus-userdebug \
+    lineage_alphaplus-eng
