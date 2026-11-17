@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+DERPFEST_BUILD_TYPE := UNOFFICIAL
+DERPFEST_MAINTAINER := protpr0t
 TARGET_SUPPORTS_BLUR := true
 TARGET_HAS_UDFPS := false
 WITH_GAPPS := true
