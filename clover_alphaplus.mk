@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2023 The LineageOS Project
-# Copyright (C) 2026 Project Infinity X
+# Copyright (C) 2026 Project Clover
 #
 # SPDX-License-Identifier: Apache-2.0
 #
