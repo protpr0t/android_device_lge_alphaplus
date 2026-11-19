@@ -19,13 +19,17 @@ TARGET_INCLUDE_BOOT_ANIMATIONS := true
 TARGET_DISABLE_EPPE := true
 TARGET_INCLUDE_GRAMOPHONE := true
 TARGET_INCLUDE_VIPERFX := false
-WITH_SU := true
-BYPASS_CHARGE_SUPPORTED := true
 TARGET_ENABLE_BLUR := true
 PERF_ANIM_OVERRIDE := false
 BUILD_BCR := true
 WITH_GMS := true
 TARGET_USES_MINI_GAPPS := true
+
+# Bypass Charging / Power Node Configuration
+TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
+WITH_SU := true
+BYPASS_CHARGE_SUPPORTED := true
+TARGET_SUPPORT_BYPASS_CHARGING := true
 
 # Other device flags
 PRODUCT_NO_CAMERA := false
