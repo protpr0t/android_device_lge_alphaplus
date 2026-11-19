@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/infinity_alphaplus.mk
+    $(LOCAL_DIR)/clover_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    infinity_alphaplus-user \
-    infinity_alphaplus-userdebug \
-    infinity_alphaplus-eng
+    clover_alphaplus-user \
+    clover_alphaplus-userdebug \
+    clover_alphaplus-eng
