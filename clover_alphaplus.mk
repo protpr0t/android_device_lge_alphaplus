@@ -19,11 +19,13 @@ TARGET_BUILD_GOOGLE_TELEPHONY := true
 TARGET_SUPPORTS_TOUCHGESTURES := true
 USE_MOTO_CALCULATOR := true
 TARGET_ENABLE_BLUR := true
+WITH_SU := true
 
 # Bypass Charging / Power Node Configuration
 TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
-WITH_SU := true
 BYPASS_CHARGE_SUPPORTED := true
+TARGET_SUPPORT_BYPASS_CHARGING := true
+TARGET_HAS_BYPASS_CHARGING := true
 
 # Other device flags
 PRODUCT_NO_CAMERA := false
