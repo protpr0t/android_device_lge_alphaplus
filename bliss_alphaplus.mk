@@ -7,11 +7,12 @@
 
 # Inherit from device tree
 $(call inherit-product, device/lge/alphaplus/device.mk)
-$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
+$(call inherit-product, vendor/bliss/config/common_full_phone.mk)
 
 # Infinity X flags
-INFINITY_BUILD_TYPE := Unofficial
-INFINITY_MAINTAINER := protpr0t
+BLISS_BUILD_TYPE := UNOFFICIAL
+BLISS_MAINTAINER := protpr0t
+BLISS_BUILD_VARIANT := GAPPS
 TARGET_SUPPORTS_BLUR := true
 TARGET_HAS_UDFPS := false
 WITH_GAPPS := true
