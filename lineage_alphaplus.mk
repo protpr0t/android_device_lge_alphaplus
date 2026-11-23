@@ -7,7 +7,7 @@
 
 # Inherit from device tree
 $(call inherit-product, device/lge/alphaplus/device.mk)
-$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
+$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
 
 # Infinity X flags
 VOLTAGE_BUILD_TYPE := Unofficial
