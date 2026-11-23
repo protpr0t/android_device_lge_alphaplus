@@ -11,8 +11,8 @@ $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/alpha/config/common_full_phone.mk)
 
 # AlphaDroid-Flags
-ALPHADROID_BUILD_TYPE := UNOFFICIAL
-ALPHADROID_MAINTAINER := protpr0t
+ALPHA_BUILD_TYPE := UNOFFICIAL
+ALPHA_MAINTAINER := protpr0t
 TORCH_STR_SUPPORTED := true
 TARGET_INCLUDE_GOOGLE_TELECOMM := true
 TARGET_INCLUDE_PARTNER_SETUP := true
