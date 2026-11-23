@@ -14,8 +14,6 @@ $(call inherit-product, vendor/alpha/config/common_full_phone.mk)
 ALPHADROID_BUILD_TYPE := UNOFFICIAL
 ALPHADROID_MAINTAINER := protpr0t
 TORCH_STR_SUPPORTED := true
-WITH_GMS := true
-TARGET_USES_MINI_GAPPS := true
 TARGET_INCLUDE_GOOGLE_TELECOMM := true
 TARGET_INCLUDE_PARTNER_SETUP := true
 TARGET_HAS_UDFPS := false
