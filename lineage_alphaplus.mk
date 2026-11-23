@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2023 The LineageOS Project
-# Copyright (C) 2026 Project Infinity X
+# Copyright (C) 2026 VoltageOS
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -10,11 +10,12 @@ $(call inherit-product, device/lge/alphaplus/device.mk)
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Infinity X flags
-INFINITY_BUILD_TYPE := Unofficial
-INFINITY_MAINTAINER := protpr0t
+VOLTAGE_BUILD_TYPE := Unofficial
+VOLTAGE_MAINTAINER := protpr0t
 TARGET_SUPPORTS_BLUR := true
 TARGET_HAS_UDFPS := false
 WITH_GAPPS := true
+TARGET_USES_MINI_GAPPS := true
 TARGET_BUILD_GOOGLE_TELEPHONY := true
 TARGET_SUPPORTS_TOUCHGESTURES := true
 USE_MOTO_CALCULATOR := true
