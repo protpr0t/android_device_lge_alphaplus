@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/infinity_alphaplus.mk
+    $(LOCAL_DIR)/lineage_alphaplus.mk
 
 COMMON_LUNCH_CHOICES := \
-    infinity_alphaplus-user \
-    infinity_alphaplus-userdebug \
-    infinity_alphaplus-eng
+    lineage_alphaplus-user \
+    lineage_alphaplus-userdebug \
+    lineage_alphaplus-eng
