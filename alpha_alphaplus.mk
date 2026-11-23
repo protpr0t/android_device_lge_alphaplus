@@ -12,13 +12,23 @@ $(call inherit-product, vendor/alpha/config/common_full_phone.mk)
 
 # AlphaDroid-Flags
 ALPHADROID_BUILD_TYPE := UNOFFICIAL
+ALPHADROID_MAINTAINER := protpr0t
 TORCH_STR_SUPPORTED := true
+TARGET_HAS_UDFPS := false
+TARGET_BUILD_GOOGLE_TELEPHONY := true
+TARGET_SUPPORTS_TOUCHGESTURES := true
+USE_MOTO_CALCULATOR := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
-# Addons
-TARGET_HAS_UDFPS := true
+# Bypass Charging / Power Node Configuration
+TARGET_POWER_BYPASS_NODE := "/sys/class/power_supply/battery/charging_enabled 0 1"
+WITH_SU := true
+BYPASS_CHARGE_SUPPORTED := true
 
 # Gms
 WITH_GMS := true
+WITH_MICROG := false
+TARGET_USES_MINI_GAPPS := true
 
 # Ship Pixel Launcher
 TARGET_DEFAULT_PIXEL_LAUNCHER := true
@@ -28,6 +38,7 @@ TARGET_PREBUILT_LAWNCHAIR_LAUNCHER := true
 
 # disable/enable blur support, default is false
 TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_BLUR := true
 
 # Whether to ship aperture camera, false by default
 PRODUCT_NO_CAMERA := false
