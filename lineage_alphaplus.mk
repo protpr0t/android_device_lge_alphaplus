@@ -36,7 +36,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # Device Identifiers (Must come after all product inclusions)
-PRODUCT_NAME := infinity_alphaplus
+PRODUCT_NAME := lineage_alphaplus
 PRODUCT_DEVICE := alphaplus
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LGE
